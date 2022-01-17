@@ -7,10 +7,10 @@ struct mainBooks
     char namaPelanggan[100];
     char namaBuku[100];
     char jenisBuku[100];
-    int qtyBuku;
+    long int qtyBuku;
     long int hargaBuku;
     char tanggalBuku[100]; // ini tuh tadi int
-    int totalHarga;
+    long int totalHarga;
     int sizeArr;
 } theBooks[50];
 int sizeArr = 0;
@@ -27,18 +27,26 @@ void listBook(int index)
         printf("Input %d\n", index);
         printf("Nama Pelanggan  : ");
         scanf(" %[^\n]s", &theBooks[index].namaPelanggan);
-        printf("Nama Buku  : ");
+        printf("Nama Buku       : ");
         scanf(" %[^\n]s", &theBooks[index].namaBuku);
-        printf("Jenis  : ");
+        printf("Jenis           : ");
         scanf(" %[^\n]s", &theBooks[index].jenisBuku);
-        printf("QTY  : ");
+        printf("QTY             : ");
         scanf("%d", &theBooks[index].qtyBuku);
-        printf("Harga  : ");
+        printf("Harga           : ");
         scanf("%d", &theBooks[index].hargaBuku);
-        printf("Tanggal  : ");
+        printf("Tanggal         : ");
         scanf(" %[^\n]s", &theBooks[index].tanggalBuku);
-        index++;
-        theBooks->sizeArr += index;
+        int totalHarga = theBooks[index].qtyBuku * theBooks[index].hargaBuku;
+        printf("var totHar %d", totalHarga);
+        theBooks[index].totalHarga = totalHarga;
+        printf("Total Harga     : %d", theBooks[index].totalHarga);
+        // index = 0
+        index++;                                // index = 1
+        // printf("\n%d\n", index);             // index setelahnya
+        // printf("\n%d\n", theBooks->sizeArr); // banyak buku saat ini
+        theBooks->sizeArr = index;
+        // printf("\n%d\n", theBooks->sizeArr);    // banyak buku saat setelah ditambahkan
 
         printf("=================\n");
         printf("Ingin Menambahkan Buku lagi ?\n");
@@ -55,19 +63,19 @@ void listBook(int index)
     }
 }
 
-void printAll()
+void printAll(int j)
 {
-    struct mainBooks theBooks[3] = {
-        {"Bayu", "Harry Potter", "Fiksi", 2},
-        {"Tyo", "BUMI", "Fiksi", 2},
-        {"Roy", "Bumi Manusia", "Fiksi", 4}};
-    int i;
-    for (i = 0; i < 3; i++)
+    printf("\n%d ini size sizeArr\n", theBooks->sizeArr); // banyak buku saat ini
+    for (j = 0; j <= theBooks->sizeArr - 1; j++)
     {
-        printf("\nNo. %d", i);
-        printf("\nNama Pelanggan  : %s \n", theBooks[i].namaPelanggan);
-        printf("\nJudul Buku      : %s \n", theBooks[i].namaBuku);
-        printf("\nJenis Buku      : %s \n", theBooks[i].jenisBuku);
+        printf("\n");
+        printf("Nama Pelanggan        : %s \n", theBooks[j].namaPelanggan);
+        printf("Judul Buku            : %s \n", theBooks[j].namaBuku);
+        printf("Jenis Buku            : %s \n", theBooks[j].jenisBuku);
+        printf("QTY Buku              : %d \n", theBooks[j].qtyBuku);
+        printf("Harga                 : %d \n", theBooks[j].hargaBuku);
+        printf("Tanggal Buku          : %s \n", theBooks[j].tanggalBuku);
+        printf("Total harga buku      : %d \n", theBooks[j].totalHarga);
     }
 }
 
@@ -99,16 +107,21 @@ int main()
             i = 0;
             break;
         case 2:
-            printf("\n%d ini size sizeArr\n", theBooks->sizeArr);
-            for (j = 0; j <= theBooks->sizeArr; j++)
-            {
-                printf("\nNama Pelanggan  : %s \n", theBooks[j].namaPelanggan);
-                printf("\nJudul Buku      : %s \n", theBooks[j].namaBuku);
-                printf("\nnJenis Buku      : %s \n", theBooks[j].jenisBuku);
-                printf("\nQTY Buku      : %d \n", theBooks[j].qtyBuku);
-                printf("\n Harga       : %d \n", theBooks[j].hargaBuku);
-                printf("\nTanggal Buku      : %s \n", theBooks[j].tanggalBuku);
-            }
+            system("cls");
+            printAll(j);
+            system("pause");
+            system("cls");
+
+            // printf("\n%d ini size sizeArr\n", theBooks->sizeArr);
+            // for (j = 0; j <= theBooks->sizeArr - 1; j++)
+            // {
+            //     printf("\nNama Pelanggan  : %s \n", theBooks[j].namaPelanggan);
+            //     printf("\nJudul Buku      : %s \n", theBooks[j].namaBuku);
+            //     printf("\nnJenis Buku      : %s \n", theBooks[j].jenisBuku);
+            //     printf("\nQTY Buku      : %d \n", theBooks[j].qtyBuku);
+            //     printf("\n Harga       : %d \n", theBooks[j].hargaBuku);
+            //     printf("\nTanggal Buku      : %s \n", theBooks[j].tanggalBuku);
+            // }
 
             i = 0;
             break;
