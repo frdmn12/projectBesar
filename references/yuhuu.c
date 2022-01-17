@@ -10,6 +10,9 @@ struct mainBooks
     long int qtyBuku;
     long int hargaBuku;
     char tanggalBuku[100]; // ini tuh tadi int
+    int day;
+    int year;
+    int month;
     long int totalHarga;
     int sizeArr;
 } theBooks[50];
@@ -17,7 +20,6 @@ int sizeArr = 0;
 
 void listBook(int index)
 {
-    // int sizeArr = 0
     int condition = 0, askAdd;
 
     printf("-- PENGINPUTAN DATA BUKU --\n");
@@ -38,15 +40,15 @@ void listBook(int index)
         printf("Tanggal         : ");
         scanf(" %[^\n]s", &theBooks[index].tanggalBuku);
         int totalHarga = theBooks[index].qtyBuku * theBooks[index].hargaBuku;
-        printf("var totHar %d", totalHarga);
+        // printf("var totHar %d", totalHarga);
         theBooks[index].totalHarga = totalHarga;
-        printf("Total Harga     : %d", theBooks[index].totalHarga);
+        printf("\nTotal Harga     : %d\n", theBooks[index].totalHarga);
         // index = 0
-        index++;                                // index = 1
-        // printf("\n%d\n", index);             // index setelahnya
-        // printf("\n%d\n", theBooks->sizeArr); // banyak buku saat ini
+        index++;                             // index = 1
+        printf("\n%d\n", index);             // index setelahnya
+        printf("\n%d\n", theBooks->sizeArr); // banyak buku saat ini
         theBooks->sizeArr = index;
-        // printf("\n%d\n", theBooks->sizeArr);    // banyak buku saat setelah ditambahkan
+        printf("\n%d\n", theBooks->sizeArr); // banyak buku saat setelah ditambahkan
 
         printf("=================\n");
         printf("Ingin Menambahkan Buku lagi ?\n");
@@ -61,6 +63,29 @@ void listBook(int index)
             condition = 1;
         }
     }
+}
+
+void writeFile()
+{
+    printf("File Processing Succes");
+    FILE *fptr;
+
+    fptr = fopen("sales.txt", "w");
+    fwrite(&theBooks, sizeof(struct mainBooks), 1, fptr);
+    fclose(fptr);
+}
+
+void readFile()
+{
+    FILE *fptr;
+    if ((fptr = fopen("sales.txt", "r")) == NULL)
+    {
+        printf("eror openingfile");
+        exit (1);
+
+    }
+    fread(&theBooks, sizeof(struct mainBooks), 1, fptr);
+    fclose(fptr);
 }
 
 void printAll(int j)
@@ -101,6 +126,7 @@ int main()
             // printf("Hello ini menu 1\n");
             system("cls");
             listBook(theBooks->sizeArr);
+            writeFile();
             system("pause");
             system("cls");
 
@@ -108,20 +134,10 @@ int main()
             break;
         case 2:
             system("cls");
+            readFile();
             printAll(j);
             system("pause");
             system("cls");
-
-            // printf("\n%d ini size sizeArr\n", theBooks->sizeArr);
-            // for (j = 0; j <= theBooks->sizeArr - 1; j++)
-            // {
-            //     printf("\nNama Pelanggan  : %s \n", theBooks[j].namaPelanggan);
-            //     printf("\nJudul Buku      : %s \n", theBooks[j].namaBuku);
-            //     printf("\nnJenis Buku      : %s \n", theBooks[j].jenisBuku);
-            //     printf("\nQTY Buku      : %d \n", theBooks[j].qtyBuku);
-            //     printf("\n Harga       : %d \n", theBooks[j].hargaBuku);
-            //     printf("\nTanggal Buku      : %s \n", theBooks[j].tanggalBuku);
-            // }
 
             i = 0;
             break;
