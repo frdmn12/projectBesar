@@ -24,6 +24,29 @@ Tanggal Transaksi
 3. Sort by Most Sales
 
 Copy The Result On dic _final_
-`
+``
     cd final
-`
+``
+
+## Terminal View
+- Display All Menu
+<div>
+<img width="300" src="./terminal-img/displayMenu.jpg"/>
+<div>
+- Menu 1
+<div>
+<img width="300" src="./terminal-img/menu1.jpg"/>
+<div>
+- Menu 2
+<div>
+<img width="300" src="./terminal-img/menu2.jpg"/>
+<div>
+- Menu 3
+<div>
+<img width="300" src="./terminal-img/menu3.jpg"/>
+<div>
+
+After the program exit, all data will be record on sales .txt
+<div>
+<img width="300" src="./terminal-img/sales.jpg"/>
+<div>
