@@ -1,11 +1,20 @@
 # BOOK SALES - TOGAMAS
+
+
 ### asist by :
-👀 Chantyo
-👀 Roy 
+- 👀 Chantyo
+- 👀 Roy 
 ## Study Case
 A company that has just started its business in the field of selling books. Currently, the company wants to create a simple application to sell and at the same time record the results of book sales made per day.
 
 The sales data data will be recorded in a file consisting of:
+Tanggal Transaksi
+- Nama pelanggan
+- Jenis buku
+- Nama buku
+- Jumlah buku
+- Harga buku
+- Total pembayaran
 
 ### Main Feature 
 1. Data collection or Add data
@@ -13,3 +22,6 @@ The sales data data will be recorded in a file consisting of:
 3. Sort by Most Sales
 
 Copy The Result On dic _final_
+`
+    cd final
+`
